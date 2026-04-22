@@ -29,6 +29,17 @@ testing {
     }
 }
 
+// construir con: gradle fatJar
+// build/libs/brunosbox-1.0-SNAPSHOT.jar
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'edu.badpals.brunosbox.Brunosbox'
+    }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
