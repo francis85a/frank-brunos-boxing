@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'jacoco'
+    id 'net.ltgt.errorprone' version "4.0.1"
+}
+
+repositories {
+    mavenCentral()
+    gradlePluginPortal()
+}
+
+dependencies {
+    // Dependencias para Error Prone y Guava
+    errorprone 'com.google.errorprone:error_prone_core:2.28.0'
+    implementation libs.guava
+    
+    // Usaremos JUnit 5 (Jupiter) ya que tus imports actuales lo prefieren
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
+    testImplementation 'org.assertj:assertj-core:3.24.2'
+}
+
+// Configuración moderna de Testing (Gradle 7.3+)
+testing {
+    suites {
+        test {
+            useJUnitJupiter('5.10.0') 
+        }
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+application {
+    mainClass = 'edu.teamrocket.App'
+}
+
+// Configuración de Jacoco vinculada a los tests
+tasks.named('test') {
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class' : 'edu.teamrocket.App',
+                   'Package-Title' : 'frank_brunos_boxing',
+                   'Package-Version': '1.0',
+                   'Specification-Title' : 'Frank Bruno\'s Boxing';
+    }
+}
