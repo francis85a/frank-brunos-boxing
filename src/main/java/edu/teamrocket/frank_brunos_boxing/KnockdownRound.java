@@ -1,15 +1,14 @@
 package edu.teamrocket.frank_brunos_boxing;
 
-public class RegularRound implements Round {
+public class KnockdownRound implements Round {
     private final String roundScore;
     private byte redBoxerScore;
     private byte blueBoxerScore;
 
-    RegularRound(String roundScore) {
+    KnockdownRound(String roundScore) {
         this.roundScore = roundScore.replaceAll("\\s+", "");
         this.parseBoxerRoundScore();
     }
-    
    String getRoundScore() {
         return this.roundScore;
     }

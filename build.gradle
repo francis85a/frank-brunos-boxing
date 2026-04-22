@@ -18,6 +18,7 @@ dependencies {
     // Usaremos JUnit 5 (Jupiter) ya que tus imports actuales lo prefieren
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
     testImplementation 'org.assertj:assertj-core:3.24.2'
+    implementation 'com.github.freva:ascii-table:1.8.0'
 }
 
 // Configuración moderna de Testing (Gradle 7.3+)
