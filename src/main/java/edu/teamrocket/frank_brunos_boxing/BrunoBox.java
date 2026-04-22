@@ -139,10 +139,10 @@ public class Brunosbox
          * como un número entero, no como un String.
          */
 
-        KnockdownRound knockdownRound = new KnockdownRound("10 - 8");
-        System.out.println("\n\t knockdown round: " + knockdownRound.getRedBoxerScore() +
+        /*KnockdownRound knockdownRound = new KnockdownRound("10 - 8");
+        *System.out.println("\n\t knockdown round: " + knockdownRound.getRedBoxerScore() +
                              " - " + knockdownRound.getBlueBoxerScore());
-                        
+         */               
         /*
          * Crea una clase RoundFactory que crea
          * un objeto de tipo RegularRound o KnockdownRound
@@ -154,10 +154,10 @@ public class Brunosbox
          * en tiempo de ejecución.
          */
 
-        RegularRound regular = (RegularRound) RoundFactory.getRound("9 - 10");
-        System.out.println("\t regular round: " + regular);
-        KnockdownRound knockdown = (KnockdownRound) RoundFactory.getRound("8 - 10");
-        System.out.println("\t knockdown round: " + knockdown);
+        //RegularRound regular = (RegularRound) RoundFactory.getRound("9 - 10");
+        //System.out.println("\t regular round: " + regular);
+        //KnockdownRound knockdown = (KnockdownRound) RoundFactory.getRound("8 - 10");
+        //System.out.println("\t knockdown round: " + knockdown);
 
  
         /*
@@ -183,12 +183,12 @@ public class Brunosbox
          * Se llaman score total.
          */
 
-        ScoreCard blueScoreCard = new ScoreCard("BLUE");
-        blueScoreCard.setRCorner("Rocky Balboa");
-        blueScoreCard.setBCorner("Apollo Creed");
- 
-        blueScoreCard.loadJudgeScoreCard(data[1]);
-        System.out.println(blueScoreCard);
+        //ScoreCard blueScoreCard = new ScoreCard("BLUE");
+        //blueScoreCard.setRCorner("Rocky Balboa");
+        //blueScoreCard.setBCorner("Apollo Creed");
+ //
+        //blueScoreCard.loadJudgeScoreCard(data[1]);
+        //System.out.println(blueScoreCard);
 
         /*
          * Calcula el final score o puntuación total
@@ -208,13 +208,13 @@ public class Brunosbox
          * como un número entero, no como un String.
          */
 
-        PointsDeducted deducted = new PointsDeducted("10 - 8 ,1");
-        System.out.println("\n\t points deducted round:\t" + deducted.getRedBoxerScore() +
-                              " - " + deducted.getBlueBoxerScore());
-        
-        deducted = new PointsDeducted("1, 8 - 10");
-        System.out.println("\n\t points deducted round:\t" + deducted.getRedBoxerScore() +
-                                                    " - " + deducted.getBlueBoxerScore());  
+        //PointsDeducted deducted = new PointsDeducted("10 - 8 ,1");
+        //System.out.println("\n\t points deducted round:\t" + deducted.getRedBoxerScore() +
+        //                      " - " + deducted.getBlueBoxerScore());
+        //
+        //deducted = new PointsDeducted("1, 8 - 10");
+        //System.out.println("\n\t points deducted round:\t" + deducted.getRedBoxerScore() +
+        //                                            " - " + deducted.getBlueBoxerScore());  
         
         /*
          * Extiende o modifica la clase RoundFactory para crear
@@ -227,8 +227,8 @@ public class Brunosbox
          * en tiempo de ejecución.
          */
 
-        PointsDeducted pointsDeducted = (PointsDeducted) RoundFactory.getRound("1, 8 - 10");
-        System.out.println("\n\t factory deducted round: " + pointsDeducted);
+        //PointsDeducted pointsDeducted = (PointsDeducted) RoundFactory.getRound("1, 8 - 10");
+        //System.out.println("\n\t factory deducted round: " + pointsDeducted);
 
         /*
          * Carga en la tarjeta pink 
@@ -254,12 +254,12 @@ public class Brunosbox
          * Se llaman score total.
          */
 
-        ScoreCard pinkScoreCard = new ScoreCard("PINK");
-        pinkScoreCard.setRCorner("Rocky Balboa");
-        pinkScoreCard.setBCorner("Apollo Creed");
-  
-        pinkScoreCard.loadJudgeScoreCard(data[2]);
-        System.out.println(pinkScoreCard);
+        //ScoreCard pinkScoreCard = new ScoreCard("PINK");
+        //pinkScoreCard.setRCorner("Rocky Balboa");
+        //pinkScoreCard.setBCorner("Apollo Creed");
+  //
+        //pinkScoreCard.loadJudgeScoreCard(data[2]);
+        //System.out.println(pinkScoreCard);
 
         /*
          * Calcula el final score o puntuación total
