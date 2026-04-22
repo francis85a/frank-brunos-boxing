@@ -20,17 +20,17 @@ public class RegularRound implements Round {
     }
 
     @Override
-    public byte getredBoxerScore() {
+    public byte getRedBoxerScore() {
         return this.redBoxerScore;
     }
 
     @Override
-    public byte getblueBoxerScore() {
+    public byte getBlueBoxerScore() {
         return this.blueBoxerScore;
     }
 
     @Override
     public String toString() {
-        return this.getredBoxerScore() + " - " + this.getblueBoxerScore();
+        return this.getRedBoxerScore() + " - " + this.getBlueBoxerScore();
     }
 }
