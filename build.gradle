@@ -48,7 +48,7 @@ java {
 }
 
 application {
-    mainClass = 'edu.teamrocket.App'
+    mainClass = 'edu.teamrocket.frank_brunos_boxing.Brunosbox'
 }
 
 // Configuración de Jacoco vinculada a los tests
@@ -62,7 +62,7 @@ jacocoTestReport {
 
 jar {
     manifest {
-        attributes 'Main-Class' : 'edu.teamrocket.App',
+        attributes 'Main-Class' : 'edu.teamrocket.Brunosbox',
                    'Package-Title' : 'frank_brunos_boxing',
                    'Package-Version': '1.0',
                    'Specification-Title' : 'Frank Bruno\'s Boxing';
