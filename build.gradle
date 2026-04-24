@@ -11,11 +11,9 @@ repositories {
 }
 
 dependencies {
-    // Dependencias para Error Prone y Guava
+    
     errorprone 'com.google.errorprone:error_prone_core:2.28.0'
     implementation libs.guava
-    
-    // Usaremos JUnit 5 (Jupiter) ya que tus imports actuales lo prefieren
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.0'
     testImplementation 'org.assertj:assertj-core:3.24.2'
     implementation 'com.github.freva:ascii-table:1.8.0'
@@ -34,7 +32,7 @@ testing {
 // build/libs/brunosbox-1.0-SNAPSHOT.jar
 task fatJar(type: Jar) {
     manifest {
-        attributes 'Main-Class': 'edu.badpals.brunosbox.Brunosbox'
+        attributes 'Main-Class': 'edu.teamrocket.frank_brunos_boxing.Brunosbox'
     }
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
     from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
@@ -62,7 +60,7 @@ jacocoTestReport {
 
 jar {
     manifest {
-        attributes 'Main-Class' : 'edu.teamrocket.Brunosbox',
+        attributes 'Main-Class' : 'edu.teamrocket.frank_brunos_boxing.Brunosbox',
                    'Package-Title' : 'frank_brunos_boxing',
                    'Package-Version': '1.0',
                    'Specification-Title' : 'Frank Bruno\'s Boxing';
