@@ -46,9 +46,8 @@ public class ScoreCard {
     public void loadJudgeScoreCard(String[] judgeScoreCard) {
         this.setJudgeScoreCard(judgeScoreCard);
 
-        Optional<Round> round = Optional.empty();
-        for (String roundScore : this.judgeScoreCard) {
-            round = Optional.ofNullable(RoundFactory.getRound(roundScore));
+        for (var roundScore : this.judgeScoreCard) {
+            var round = Optional.ofNullable(RoundFactory.getRound(roundScore));
             round.ifPresent(this::addRound);
         }
     }
@@ -57,24 +56,28 @@ public class ScoreCard {
 
     @Override
     public String toString() {
-        return "\n\t\t\t   " + this.color
-                + "\n\t\t" + this.blueCorner
-                + "\t" + this.redCorner
-                + "\n\t\t\t"
-                + this.getNumRounds() + " rounds\n"
-                + this.viewRounds()
-                + "\n\t FINAL SCORE: "
-                + this.getRedBoxerFinalScore()
-                + " - "
-                + this.getBlueBoxerFinalScore()
-                + " FINAL SCORE";
+        return """
+                 \t\t\t  %s
+                \t\t%s\t%s
+                \t\t\t%s rounds
+                %s
+                \t   FINAL SCORE: %s - %S FINALSCORE"""
+                .formatted(
+                    this.color,
+                    this.redCorner,
+                    this.blueCorner,
+                    this.getNumRounds(),
+                    this.viewRounds(),
+                    this.getRedBoxerFinalScore(),
+                    this.getBlueBoxerFinalScore()
+                );
     }
 
     public byte getRedBoxerFinalScore() {
         if (this.RedBoxerFinalScore == 0) {
             int redBoxerTotalScore = 0;
             for (Round round : this.rounds) {
-                redBoxerTotalScore += round.getRedBoxerScore();
+                redBoxerTotalScore += round.redBoxerScore();
             }
             this.RedBoxerFinalScore = (byte) redBoxerTotalScore;
         }
@@ -85,7 +88,7 @@ public class ScoreCard {
         if (this.BlueBoxerFinalScore == 0) {
             int blueBoxerTotalScore = 0;
             for (Round round : this.rounds) {
-                blueBoxerTotalScore += round.getBlueBoxerScore();
+                blueBoxerTotalScore += round.blueBoxerScore();
             }
             this.BlueBoxerFinalScore = (byte) blueBoxerTotalScore;
         }
@@ -102,20 +105,16 @@ public class ScoreCard {
         byte redBoxerTotalScore = 0;
         byte blueBoxerTotalScore = 0;
 
-        for (Round round : this.rounds) {
-            redBoxerTotalScore += round.getRedBoxerScore();
-            blueBoxerTotalScore += round.getBlueBoxerScore();
-
-            roundsView.append("\n\t")
-                    .append(round.getRedBoxerScore())
-                    .append("\t\s")
-                    .append(redBoxerTotalScore += round.getRedBoxerScore())
-                    .append("\t\s\s")
-                    .append(numRound++)
-                    .append("\t\s")
-                    .append(blueBoxerTotalScore += round.getBlueBoxerScore())
-                    .append("\t\s")
-                    .append(round.getBlueBoxerScore());
+        for(Round round : this.rounds) {
+            roundsView.append("""
+                \n\t%s\t %s\t  %s\t %s\t %s"""
+                .formatted(
+                    round.redBoxerScore(),
+                    redBoxerTotalScore += round.redBoxerScore(),
+                    numRound++,
+                    blueBoxerTotalScore += round.blueBoxerScore(),
+                    round.blueBoxerScore()
+                ));
         }
         return roundsView.toString();
     }

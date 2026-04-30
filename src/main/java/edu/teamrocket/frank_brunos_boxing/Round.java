@@ -1,6 +1,6 @@
 package edu.teamrocket.frank_brunos_boxing;
 
-interface Round {
-    byte getRedBoxerScore();
-    byte getBlueBoxerScore();
+sealed interface Round permits RegularRound, KnockdownRound, PointsDeducted {
+    byte redBoxerScore();
+    byte blueBoxerScore();
 }

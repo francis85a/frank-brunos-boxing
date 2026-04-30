@@ -1,37 +1,30 @@
 package edu.teamrocket.frank_brunos_boxing;
 
-public class RegularRound implements Round {
-    private final String roundScore;
-    private byte redBoxerScore;
-    private byte blueBoxerScore;
+record RegularRound(String roundScore, byte redBoxerScore, byte blueBoxerScore) implements Round {
 
-    RegularRound(String roundScore) {
-        this.roundScore = roundScore.replaceAll("\\s+", "");
-        this.parseBoxerRoundScore();
+    RegularRound {
+        if (roundScore == null) throw new IllegalArgumentException("Round score cannot be null");
+        
+    }
+
+    RegularRound(String roundScore){
+        this (roundScore.replaceAll("\\s", ""),
+        parseBoxerRoundScore(roundScore, Boxer.RED),
+        parseBoxerRoundScore(roundScore, Boxer.BLUE)
+    );
     }
     
    String getRoundScore() {
         return this.roundScore;
     }
 
-    private void parseBoxerRoundScore(){
-        String[] scores = getRoundScore().split("-", 2);
-        this.redBoxerScore = Byte.parseByte(scores[0]);
-        this.blueBoxerScore = Byte.parseByte(scores[1]);
-    }
-
-    @Override
-    public byte getRedBoxerScore() {
-        return this.redBoxerScore;
-    }
-
-    @Override
-    public byte getBlueBoxerScore() {
-        return this.blueBoxerScore;
+    private static byte parseBoxerRoundScore(String roundScore, Boxer boxer) {
+        String[] scores = roundScore.replaceAll("\\s", "").split("-", 2);
+        return Byte.parseByte(scores[boxer.corner()]);
     }
 
     @Override
     public String toString() {
-        return this.getRedBoxerScore() + " - " + this.getBlueBoxerScore();
+        return this.redBoxerScore() + " - " + this.blueBoxerScore();
     }
 }

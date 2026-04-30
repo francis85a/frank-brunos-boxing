@@ -18,16 +18,16 @@ public class PointsDeductedTest {
     public void roundScoreToIntBlueTest() {
         PointsDeducted round = new PointsDeducted("10 - 8 ,1");
         assertEquals(round.getRoundScore(), "10-8,1");
-        assertEquals(10, round.getRedBoxerScore());
-        assertEquals(8, round.getBlueBoxerScore());
+        assertEquals(10, round.redBoxerScore());
+        assertEquals(8, round.blueBoxerScore());
     }
 
     @Test
     public void roundScoreToIntRedTest() {
         PointsDeducted round = new PointsDeducted("1, 8 - 10");
         assertEquals(round.getRoundScore(), "1,8-10");
-        assertEquals(8, round.getRedBoxerScore());
-        assertEquals(10, round.getBlueBoxerScore());
+        assertEquals(8, round.redBoxerScore());
+        assertEquals(10, round.blueBoxerScore());
     }
     
 }

@@ -9,14 +9,14 @@ public class KnockdownTest {
     @Test
     public void replaceTest() {
         KnockdownRound round = new KnockdownRound("10 - 8");
-        assertEquals(round.getRoundScore(), "10-8");
+        assertEquals(round.roundScore(), "10-8");
     }
 
     @Test
     public void roundScoreToIntTest() {
         KnockdownRound round = new KnockdownRound("10 - 8");
-        assertEquals(round.getRoundScore(), "10-8");
-        assertEquals(10, round.getRedBoxerScore());
-        assertEquals(8, round.getBlueBoxerScore());
+        assertEquals(round.roundScore(), "10-8");
+        assertEquals(10, round.redBoxerScore());
+        assertEquals(8, round.blueBoxerScore());
     }
 }
